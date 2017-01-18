@@ -69,7 +69,7 @@ function home(res){
 
 function buildMosaico( name , callback ){
     // exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ');
-    exec('metapixel --metapixel -l dist-img/ --metric wavelet --search local --distance 4 --cheat 30 --scale 5 \'/home/programador/workspace/play/itau/upload/'+name+'\' \'/home/programador/workspace/play/itau/upload/'+name+'\' ', (error, stdout, stderr) => {
+    exec('metapixel --metapixel -l dist-img --metric wavelet --search local --distance 4 --cheat 30 --scale 4 \'/home/programador/workspace/play/itau/upload/'+name+'\' \'/home/programador/workspace/play/itau/upload/'+name+'\' ', (error, stdout, stderr) => {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
 
