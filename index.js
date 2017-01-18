@@ -3,6 +3,7 @@ const exec = require('child_process').exec
 , http = require('http')
 , fs = require('fs')
 
+const dir = "/home/programador/workspace/play/itau/";
 
 function upload(req, res){
     var form = new formidable.IncomingForm();
@@ -66,10 +67,13 @@ function home(res){
 }
 
 
+function prepare(){
+    exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ');
+}
+
 
 function buildMosaico( name , callback ){
-    // exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ');
-    exec('metapixel --metapixel -l dist-img --metric wavelet --search local --distance 4 --cheat 30 --scale 4 \'/home/programador/workspace/play/itau/upload/'+name+'\' \'/home/programador/workspace/play/itau/upload/'+name+'\' ', (error, stdout, stderr) => {
+    exec('metapixel --metapixel -l dist-img --metric wavelet --search local --distance 4 --cheat 30 --scale 5 \''+dir+'upload/'+name+'\' \''+dir+'upload/'+name+'\' ', (error, stdout, stderr) => {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
 
@@ -77,15 +81,18 @@ function buildMosaico( name , callback ){
             console.log('exec error: ' + error);
         }
 
-        callback( false, '/home/programador/workspace/play/itau/upload/'+name );
+        callback( false, dir+'upload/'+name );
 
     });
 }
 
 http.createServer( (req, res) => {
-    if(!((req.url === "/upload") && (req.method === "POST"))){
-        home(res);
-    }else{
+    console.log(req.url,req.method);
+    if( req.url === "/upload" && req.method === "POST" ){
         upload(req, res);
+    }else if( (req.url === "/prepare") && (req.method === "GET") ){
+        prepare()
+    }else{
+        home(res);
     }
 }).listen(3006);
