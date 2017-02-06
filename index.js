@@ -3,7 +3,7 @@ const exec = require('child_process').exec
 , http = require('http')
 , fs = require('fs')
 
-const dir = "/home/programador/workspace/play/itau/";
+const dir = "/var/www/mosaico/";
 
 function upload(req, res){
     var form = new formidable.IncomingForm();
@@ -95,4 +95,4 @@ http.createServer( (req, res) => {
     }else{
         home(res);
     }
-}).listen(3006);
+}).listen(3001);
