@@ -21,9 +21,11 @@ function upload(req, res){
             fs.rename( image_upload_path_old, image_upload_path_name, function (err) {
                 if (err) {
                     console.log('Err: ', err);
-                    res.end('Deu merda na hora de mover a imagem!');
+                    res.end('Erro na hora de mover a imagem!');
                 }
                 var msg = 'Imagem ' + image_upload_name + ' salva em: ' + image_upload_path_new;
+                console.log(msg);
+                
                 buildMosaico( image_upload_name , (err, response) => {
 
                     fs.readFile( response , function(err, data) {
@@ -38,14 +40,14 @@ function upload(req, res){
             fs.mkdir(image_upload_path_new, function (err) {
                 if (err) {
                     console.log('Err: ', err);
-                    res.end('Deu merda na hora de criar o diretório!');
+                    res.end('Erro na hora de criar o diretório!');
                 }
                 fs.rename(
                     image_upload_path_old,
                     image_upload_path_name,
                     function(err) {
                         var msg = 'Imagem ' + image_upload_name + ' salva em: ' + image_upload_path_new;
-
+                        console.log(msg);
                         buildMosaico( image_upload_name , (err, response) => {
 
                             fs.readFile( response , function(err, data) {
@@ -69,7 +71,15 @@ function home(res){
 
 
 function prepare(){
-    exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ');
+    exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ',  (error, stdout, stderr) => {
+
+        if (error !== null) {
+            res.end('exec error: ' + error);
+        }
+
+        res.end(stdout);
+
+    });
 }
 
 
