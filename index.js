@@ -3,7 +3,11 @@ const exec = require('child_process').exec
 , http = require('http')
 , fs = require('fs')
 
+<<<<<<< HEAD
 const dir = "/var/www/mosaico/";
+=======
+const dir = "/home/programador/workspace/play/itau/";
+>>>>>>> 8b6d26b30f2e1c38ca2c0c3a2787c814d4ce69c5
 
 function upload(req, res){
     var form = new formidable.IncomingForm();
@@ -95,4 +99,8 @@ http.createServer( (req, res) => {
     }else{
         home(res);
     }
+<<<<<<< HEAD
 }).listen(3001);
+=======
+}).listen(3006);
+>>>>>>> 8b6d26b30f2e1c38ca2c0c3a2787c814d4ce69c5

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "itau",
     "version": "1.0.0",
     "description": "",
@@ -16,4 +17,19 @@
         "formidable": "^1.1.1",
         "imagediff": "^1.0.8"
     }
+=======
+  "name": "itau",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.1.1",
+    "imagediff": "^1.0.8"
+  }
+>>>>>>> 8b6d26b30f2e1c38ca2c0c3a2787c814d4ce69c5
 }
