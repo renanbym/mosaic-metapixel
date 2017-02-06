@@ -25,7 +25,7 @@ function upload(req, res){
                 }
                 var msg = 'Imagem ' + image_upload_name + ' salva em: ' + image_upload_path_new;
                 console.log(msg);
-                
+
                 buildMosaico( image_upload_name , (err, response) => {
 
                     fs.readFile( response , function(err, data) {
@@ -74,10 +74,10 @@ function prepare(){
     exec('metapixel-prepare -r img/ dist-img/ --width=48 --height=48 ',  (error, stdout, stderr) => {
 
         if (error !== null) {
-            res.end('exec error: ' + error);
+            console.log('exec error: ' + error);
         }
 
-        res.end(stdout);
+        console.log(stdout);
 
     });
 }
