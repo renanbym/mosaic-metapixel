@@ -96,8 +96,4 @@ http.createServer( (req, res) => {
     }else{
         home(res);
     }
-<<<<<<< HEAD
 }).listen(3001);
-=======
-}).listen(3006);
->>>>>>> 8b6d26b30f2e1c38ca2c0c3a2787c814d4ce69c5
